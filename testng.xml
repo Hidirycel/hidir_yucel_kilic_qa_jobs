@@ -1,0 +1,7 @@
+<suite name="InsiderSuite">
+    <test name="QA Job Filter Test">
+        <classes>
+            <class name="tests.InsiderTest"/>
+        </classes>
+    </test>
+</suite>
