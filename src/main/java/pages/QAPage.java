@@ -1,11 +1,19 @@
 package pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.SleeperUtils;
+
+import java.time.Duration;
 
 public class QAPage {
     WebDriver driver;
@@ -37,10 +45,16 @@ public class QAPage {
     }
 
     public void filterJobs() {
-        locationFilter.click();
-        locationIstanbul.click();
-        departmentFilter.click();
-        departmentQa.click();
+        SleeperUtils.wait(5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        Actions actions = new Actions(driver);
+
+        WebElement locationFilter = wait.until(ExpectedConditions.elementToBeClickable(By.id("select2-filter-by-location-container")));
+        actions.moveToElement(locationFilter).click().perform();
+
+        WebElement locationIstanbul = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(@class, 'select2-results__option') and text()='Istanbul, Turkiye']")));
+        actions.moveToElement(locationIstanbul).click().perform();
+
     }
 
     public void verifyJobsDisplayed() {
