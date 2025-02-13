@@ -38,9 +38,8 @@ public class InsiderTest {
 
     @Test
     public void testQAJobDetails() {
-        //todo
-        //jobDetailsPage.openJobApplication();
-        //jobDetailsPage.verifyJobDetails();
+        jobDetailsPage.openJobApplication();
+        jobDetailsPage.verifyJobDetails();
     }
 
     @AfterClass
